@@ -13,7 +13,7 @@ import {
     CardTitle,
   } from "@/components/ui/card"
   
-  import {
+import {
       Dialog,
       DialogContent,
       DialogDescription,
@@ -22,7 +22,7 @@ import {
       DialogTrigger,
       DialogFooter,
       DialogClose
-    } from "@/components/ui/dialog"
+} from "@/components/ui/dialog"
 
 
 export default  function HomePage () {
