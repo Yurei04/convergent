@@ -27,6 +27,11 @@ const resources = [
 ];
 
 export default function LibraryHub() {
+    const [resourceDatabase, setResourceDatabase] = useState([]);
+    const [recommendedJobs, setRecommendedJobs] = useState([]);
+    const [openDialog, setOpenDialog] = useState(false);
+    const router = useRouter();
+    
     return (
         <div className="relative lg:py-22 py-20 items-center">
             <Table>

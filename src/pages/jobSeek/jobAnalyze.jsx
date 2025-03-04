@@ -14,7 +14,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Card,
@@ -34,6 +33,7 @@ import {
 } from "@/components/ui/table";
 
 import PdfParse from "pdf-parse";
+import * as mammoth from "mammoth"; 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -44,20 +44,54 @@ export default function AnalyzeResume() {
   const [openDialog, setOpenDialog] = useState(false);
   const router = useRouter();
 
-
   useEffect(() => {
-    fetch("/database/data/resources.json") 
+    fetch("/database/data/resources.json")
       .then((res) => res.json())
       .then((data) => setJobDatabase(data))
       .catch((err) => console.error("Failed to load job database:", err));
   }, []);
 
+  // Handle File Upload
+  const handleFileUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const fileData = e.target.result;
+      if (file.type === "application/pdf") {
+        try {
+          const pdfData = await PdfParse(Buffer.from(new Uint8Array(fileData)));
+          setResumeText(pdfData.text);
+        } catch (error) {
+          console.error("PDF parsing error:", error);
+        }
+      } else if (
+        file.type ===
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      ) {
+        try {
+          const docxText = await mammoth.extractRawText({
+            arrayBuffer: fileData,
+          });
+          setResumeText(docxText.value);
+        } catch (error) {
+          console.error("DOCX parsing error:", error);
+        }
+      } else {
+        alert("Unsupported file format. Please upload a PDF or DOCX.");
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  };
+
   const analyzeResume = () => {
     if (!jobDatabase.length) return;
     const matchedJobs = jobDatabase.filter((entry) =>
-      entry.job.keywords.some((keyword) => resumeText.toLowerCase().includes(keyword))
+      entry.job.keywords.some((keyword) =>
+        resumeText.toLowerCase().includes(keyword)
+      )
     );
-
     setRecommendedJobs(matchedJobs);
     setOpenDialog(true);
   };
@@ -74,17 +108,25 @@ export default function AnalyzeResume() {
           <TabsTrigger value="password">Without DID</TabsTrigger>
         </TabsList>
 
-        {/* Upload Section */}
         {["account", "password"].map((tabValue) => (
           <TabsContent key={tabValue} value={tabValue}>
             <Card>
               <CardHeader>
-                <CardTitle>{tabValue === "account" ? "With DID" : "Without DID"}</CardTitle>
-                <CardDescription>Upload your resume and analyze job matches.</CardDescription>
+                <CardTitle>
+                  {tabValue === "account" ? "With DID" : "Without DID"}
+                </CardTitle>
+                <CardDescription>
+                  Upload your resume and analyze job matches.
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <Label htmlFor="pdfUpload">Upload Resume</Label>
-                <Input id="pdfUpload" type="file" accept=".pdf,.docx" />
+                <Label htmlFor="resumeUpload">Upload Resume</Label>
+                <Input
+                  id="resumeUpload"
+                  type="file"
+                  accept=".pdf,.docx"
+                  onChange={handleFileUpload}
+                />
               </CardContent>
               <CardFooter>
                 <Button onClick={analyzeResume}>Analyze</Button>
@@ -93,7 +135,6 @@ export default function AnalyzeResume() {
           </TabsContent>
         ))}
 
-        {/* Job Recommendation Modal */}
         <Dialog open={openDialog} onOpenChange={setOpenDialog}>
           <DialogContent>
             <DialogHeader>
@@ -116,16 +157,28 @@ export default function AnalyzeResume() {
                       <TableCell>{entry.job.title}</TableCell>
                       <TableCell>{entry.job.specifics.type}</TableCell>
                       <TableCell>
-                        <a href={entry.job.specifics.resources.tutorials.links} target="_blank" className="text-blue-500">
+                        <a
+                          href={entry.job.specifics.resources.tutorials.links}
+                          target="_blank"
+                          className="text-blue-500"
+                        >
                           Tutorials
                         </a>
                         ,{" "}
-                        <a href={entry.job.specifics.resources.videos.links} target="_blank" className="text-blue-500">
+                        <a
+                          href={entry.job.specifics.resources.videos.links}
+                          target="_blank"
+                          className="text-blue-500"
+                        >
                           Videos
                         </a>
                       </TableCell>
                       <TableCell>
-                        <a href={entry.job.specifics.Tools.web.links} target="_blank" className="text-blue-500">
+                        <a
+                          href={entry.job.specifics.Tools.web.links}
+                          target="_blank"
+                          className="text-blue-500"
+                        >
                           Web Tools
                         </a>
                       </TableCell>
