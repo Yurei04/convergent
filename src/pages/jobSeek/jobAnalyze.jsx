@@ -61,7 +61,6 @@ export default function AnalyzeResume() {
     reader.readAsDataURL(file);
     reader.onload = async () => {
       const base64File = reader.result?.split(",")[1] || "";
-;
 
       const response = await fetch("/components/scriptum/parseResume", {
         method: "POST",
@@ -75,34 +74,58 @@ export default function AnalyzeResume() {
 
   const analyzeResume = () => {
     if (!jobDatabase.length) return;
-    const matchedJobs = jobDatabase.filter((entry) =>
-      entry.job.keywords.some((keyword) =>
-        resumeText.toLowerCase().includes(keyword)
-      )
-    );
-    console.log("Matched Jobs:", matchedJobs);
-    setRecommendedJobs(matchedJobs);
+    
+    const { matches, recommendations } = findMatchingJob(resumeText, jobDatabase);
+    
+    console.log("Exact Matches:", matches);
+    console.log("Recommended Alternatives:", recommendations);
+  
+    setRecommendedJobs(matches.length > 0 ? matches : recommendations);
     setOpenDialog(true);
   };
-
+  
   const goToApplyPage = () => {
     router.push("/apply");
   };
 
+  function findMatchingJob (resumeText, jobDatabase) {
+    let matches = [];
+    let recommendations = [];
+
+    resumeText = resumeText.toLowerCase();
+
+    jobDatabase.forEach(jobEntry => {
+      const { title, keywords } = jobEntry.job;
+      const jobTitle = title.toLowerCase();
+
+      if(resumeText.includes(jobTitle) || keywords.some(kw => resumeText.includes(kw.toLowerCase()))) {
+        matches.push(jobEntry);
+      } else {
+        recommendations.push(jobEntry);
+      }
+    });
+
+    if (matches.length > 0) {
+        return { matches, recommendations: [] }; 
+    } else {
+        return { matches: [], recommendations: recommendations.slice(0, 3) }; // Suggest 3 alternatives
+    }
+  }
+
   return (
     <div className="items-center justify-center flex mt-5">
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="withDID" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="account">With DID</TabsTrigger>
-          <TabsTrigger value="password">Without DID</TabsTrigger>
+          <TabsTrigger value="withDID">With DID</TabsTrigger>
+          <TabsTrigger value="withoutDID">Without DID</TabsTrigger>
         </TabsList>
 
-        {["account", "password"].map((tabValue) => (
+        {["withDID", "withoutDID"].map((tabValue) => (
           <TabsContent key={tabValue} value={tabValue}>
             <Card>
               <CardHeader>
                 <CardTitle>
-                  {tabValue === "account" ? "With DID" : "Without DID"}
+                  {tabValue === "withDID" ? "With DID" : "Without DID"}
                 </CardTitle>
                 <CardDescription>
                   Upload your resume and analyze job matches.

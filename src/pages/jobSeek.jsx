@@ -1,3 +1,5 @@
+"use client"
+
 import {
     Card,
     CardContent,
@@ -18,6 +20,12 @@ export default function JobSeeker() {
                 <div className="flex w-full max-w-sm items-center space-x-2">
                     <Input type="text" placeholder="Search Jobs" />
                     <Button type="submit">Search</Button>
+                </div>
+                <br />
+                <div>
+                    <Table>
+                        
+                    </Table>
                 </div>
             <div className="grid grid-cols-2 grid-rows-auto items-center justify-center gap-5 mt-5 sm:grid-cols-2 grid-row-1">
             <Card>
