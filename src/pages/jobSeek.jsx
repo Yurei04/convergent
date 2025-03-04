@@ -104,10 +104,8 @@ export default function JobSeeker() {
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>Job Title</TableHead>
-                                    <TableHead>Description</TableHead>
                                     <TableHead>Type</TableHead>
                                     <TableHead>Resources</TableHead>
-                                    <TableHead>Sustainability</TableHead>
                                     <TableHead>Tools</TableHead>
                                 </TableRow>
                             </TableHeader>
@@ -116,19 +114,35 @@ export default function JobSeeker() {
                                     const job = jobItem.job;
                                     return (
                                         <TableRow key={index}>
-                                            <TableCell>{job.title}</TableCell>
-                                            <TableCell>{job.specifics.des}</TableCell>
-                                            <TableCell>{job.specifics.type}</TableCell>
-                                            <TableCell>
-                                                {job.specifics.resources.tutorials.links.join(", ")}
-                                            </TableCell>
-                                            <TableCell>{job.specifics.sustain.sustainability}</TableCell>
-                                            <TableCell>
-                                                {Object.keys(job.specifics.Tools)
-                                                    .map((tool) => job.specifics.Tools[tool].links.join(", "))
-                                                    .join(", ")}
-                                            </TableCell>
-                                        </TableRow>
+                                        <TableCell>{job.title || "#"}</TableCell>
+                                        <TableCell>{job.specifics.type || "#"}</TableCell>
+                                        <TableCell>
+                                          <a
+                                            href={job.specifics.resources.tutorials.links || "#"}
+                                            target="_blank"
+                                            className="text-blue-500"
+                                          >
+                                            Tutorials
+                                          </a>
+                                          ,{" "}
+                                          <a
+                                            href={job.specifics.resources.videos.links || "#"}
+                                            target="_blank"
+                                            className="text-blue-500"
+                                          >
+                                            Videos
+                                          </a>
+                                        </TableCell>
+                                        <TableCell>
+                                          <a
+                                            href={job.specifics.Tools.web.links || "#"}
+                                            target="_blank"
+                                            className="text-blue-500"
+                                          >
+                                            Web Tools
+                                          </a>
+                                        </TableCell>
+                                      </TableRow>
                                     );
                                 })}
                             </TableBody>
@@ -230,6 +244,12 @@ export default function JobSeeker() {
             </PaginationItem>
             <PaginationItem>
             <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+            <PaginationLink href="#">2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
             </PaginationItem>
             <PaginationItem>
             <PaginationEllipsis />
