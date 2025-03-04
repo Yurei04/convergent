@@ -1,115 +1,148 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs"
-
+} from "@/components/ui/tabs";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-
+} from "@/components/ui/dialog";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
-
-
+import PdfParse from "pdf-parse";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function AnalyzeResume() {
-    < div className="items-center justify-center flex mt-5">
-        <Tabs defaultValue="account" className="w-[400px]">
-            <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">With DID</TabsTrigger>
-                <TabsTrigger value="password">Without DID</TabsTrigger>
-            </TabsList>
-            <TabsContent value="account">
-                <Card>
-                <CardHeader>
-                    <CardTitle>With DID</CardTitle>
-                    <CardDescription>
-                        Make changes to your account here. Click save when you're done.
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                    <div className="space-y-1">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" defaultValue="Pedro Duarte" />
-                    </div>
-                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="pdf, docx">Resume</Label>
-                    <Input id="picture" type="file" />
-                    </div>
-                </CardContent>
-                <CardFooter>
-                    <DialogTrigger>
-                        <Button>Analyze</Button>
-                    </DialogTrigger>
-                </CardFooter>
-                </Card>
-                <Dialog>
-                    {/* ADD HERE THE RESULTS OF THE ANALYSIS FROM SCRIPTUM */}
-                    <DialogContent>
-                        <DialogHeader>
-                        <DialogTitle>Results</DialogTitle>
-                        <DialogDescription>
-                            RANDOM RANDOM BLAH BLAH
-                        </DialogDescription>
-                        </DialogHeader>
-                    </DialogContent>
-                </Dialog>
-            </TabsContent>
+  const [resumeText, setResumeText] = useState("");
+  const [jobDatabase, setJobDatabase] = useState([]);
+  const [recommendedJobs, setRecommendedJobs] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const router = useRouter();
 
-            <TabsContent value="password">
-                <Card>
-                <CardHeader>
-                    <CardTitle>Without DID</CardTitle>
-                    <CardDescription>
-                        Change your password here. After saving, you'll be logged out.
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                    <div className="space-y-1">
-                    <Label htmlFor="current">Name</Label>
-                    <Input id="current" type="password" />
-                    </div>
-                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor="pdf, docx">Resume</Label>
-                    <Input id="picture" type="file" />
-                    </div>
-                </CardContent>
-                <CardFooter>
-                    <DialogTrigger>
-                        <Button>Analyze</Button>
-                    </DialogTrigger>
-                </CardFooter>
-                </Card>
-                <Dialog>
-                    {/* ADD HERE THE RESULTS OF THE ANALYSIS FROM SCRIPTUM */}
-                    <DialogContent>
-                        <DialogHeader>
-                        <DialogTitle>Results</DialogTitle>
-                        <DialogDescription>
-                            RANDOM RANDOM BLAH BLAH
-                        </DialogDescription>
-                        </DialogHeader>
-                    </DialogContent>
-                </Dialog>
 
-            </TabsContent>
-        </Tabs>
+  useEffect(() => {
+    fetch("/database/data/resources.json") 
+      .then((res) => res.json())
+      .then((data) => setJobDatabase(data))
+      .catch((err) => console.error("Failed to load job database:", err));
+  }, []);
+
+  const analyzeResume = () => {
+    if (!jobDatabase.length) return;
+    const matchedJobs = jobDatabase.filter((entry) =>
+      entry.job.keywords.some((keyword) => resumeText.toLowerCase().includes(keyword))
+    );
+
+    setRecommendedJobs(matchedJobs);
+    setOpenDialog(true);
+  };
+
+  const goToApplyPage = () => {
+    router.push("/apply");
+  };
+
+  return (
+    <div className="items-center justify-center flex mt-5">
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="account">With DID</TabsTrigger>
+          <TabsTrigger value="password">Without DID</TabsTrigger>
+        </TabsList>
+
+        {/* Upload Section */}
+        {["account", "password"].map((tabValue) => (
+          <TabsContent key={tabValue} value={tabValue}>
+            <Card>
+              <CardHeader>
+                <CardTitle>{tabValue === "account" ? "With DID" : "Without DID"}</CardTitle>
+                <CardDescription>Upload your resume and analyze job matches.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Label htmlFor="pdfUpload">Upload Resume</Label>
+                <Input id="pdfUpload" type="file" accept=".pdf,.docx" />
+              </CardContent>
+              <CardFooter>
+                <Button onClick={analyzeResume}>Analyze</Button>
+              </CardFooter>
+            </Card>
+          </TabsContent>
+        ))}
+
+        {/* Job Recommendation Modal */}
+        <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Recommended Jobs</DialogTitle>
+            </DialogHeader>
+
+            {recommendedJobs.length > 0 ? (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Job Title</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Resources</TableHead>
+                    <TableHead>Tools</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {recommendedJobs.map((entry, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{entry.job.title}</TableCell>
+                      <TableCell>{entry.job.specifics.type}</TableCell>
+                      <TableCell>
+                        <a href={entry.job.specifics.resources.tutorials.links} target="_blank" className="text-blue-500">
+                          Tutorials
+                        </a>
+                        ,{" "}
+                        <a href={entry.job.specifics.resources.videos.links} target="_blank" className="text-blue-500">
+                          Videos
+                        </a>
+                      </TableCell>
+                      <TableCell>
+                        <a href={entry.job.specifics.Tools.web.links} target="_blank" className="text-blue-500">
+                          Web Tools
+                        </a>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            ) : (
+              <p>No matching jobs found.</p>
+            )}
+
+            <Button className="w-full mt-4" onClick={goToApplyPage}>
+              Apply Now
+            </Button>
+          </DialogContent>
+        </Dialog>
+      </Tabs>
     </div>
+  );
 }

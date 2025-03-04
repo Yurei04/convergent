@@ -1,0 +1,35 @@
+[
+    {
+        "job": {
+            "title": "software engineer",
+            "keywords": ["code", "think"],
+            "specifics": {
+                "type": "remote",
+                "des": "",
+                "sustain": {
+                    "carbonFootprint": "",
+                    "sustainability": ""
+                },
+                "resources": {
+                    "tutorials": {
+                        "links": "w3s"
+                    },
+                    "videos": {
+                        "links": "youtube"
+                    }
+                },
+                "Tools": {
+                    "web": {
+                        "des": "",
+                        "links": "http"
+                    }, 
+                    "app": {
+                        "des": "",
+                        "links": ""
+                    }
+                }
+            }
+        }
+        
+    }
+]
