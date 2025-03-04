@@ -32,8 +32,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import PdfParse from "pdf-parse";
-import * as mammoth from "mammoth"; 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -45,10 +43,13 @@ export default function AnalyzeResume() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("/database/data/resources.json")
+    fetch("/database/data/resource.json")
       .then((res) => res.json())
-      .then((data) => setJobDatabase(data))
-      .catch((err) => console.error("Failed to load job database:", err));
+      .then((data) => {
+        console.log("Job database loaded:", data);
+        setJobDatabase(data); 
+      })
+      .catch((error) => console.error("Failed to load job database:", error));
   }, []);
 
   // Handle File Upload
@@ -57,32 +58,19 @@ export default function AnalyzeResume() {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = async (e) => {
-      const fileData = e.target.result;
-      if (file.type === "application/pdf") {
-        try {
-          const pdfData = await PdfParse(Buffer.from(new Uint8Array(fileData)));
-          setResumeText(pdfData.text);
-        } catch (error) {
-          console.error("PDF parsing error:", error);
-        }
-      } else if (
-        file.type ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      ) {
-        try {
-          const docxText = await mammoth.extractRawText({
-            arrayBuffer: fileData,
-          });
-          setResumeText(docxText.value);
-        } catch (error) {
-          console.error("DOCX parsing error:", error);
-        }
-      } else {
-        alert("Unsupported file format. Please upload a PDF or DOCX.");
-      }
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const base64File = reader.result?.split(",")[1] || "";
+;
+
+      const response = await fetch("/components/scriptum/parseResume", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({ file: base64File })
+      });
+      const result = await response.json();
+      setResumeText(result.text);
     };
-    reader.readAsArrayBuffer(file);
   };
 
   const analyzeResume = () => {
@@ -92,6 +80,7 @@ export default function AnalyzeResume() {
         resumeText.toLowerCase().includes(keyword)
       )
     );
+    console.log("Matched Jobs:", matchedJobs);
     setRecommendedJobs(matchedJobs);
     setOpenDialog(true);
   };
@@ -154,11 +143,11 @@ export default function AnalyzeResume() {
                 <TableBody>
                   {recommendedJobs.map((entry, index) => (
                     <TableRow key={index}>
-                      <TableCell>{entry.job.title}</TableCell>
-                      <TableCell>{entry.job.specifics.type}</TableCell>
+                      <TableCell>{entry.job.title || "#"}</TableCell>
+                      <TableCell>{entry.job.specifics.type || "#"}</TableCell>
                       <TableCell>
                         <a
-                          href={entry.job.specifics.resources.tutorials.links}
+                          href={entry.job.specifics.resources.tutorials.links || "#"}
                           target="_blank"
                           className="text-blue-500"
                         >
@@ -166,7 +155,7 @@ export default function AnalyzeResume() {
                         </a>
                         ,{" "}
                         <a
-                          href={entry.job.specifics.resources.videos.links}
+                          href={entry.job.specifics.resources.videos.links || "#"}
                           target="_blank"
                           className="text-blue-500"
                         >
@@ -175,7 +164,7 @@ export default function AnalyzeResume() {
                       </TableCell>
                       <TableCell>
                         <a
-                          href={entry.job.specifics.Tools.web.links}
+                          href={entry.job.specifics.Tools.web.links || "#"}
                           target="_blank"
                           className="text-blue-500"
                         >
