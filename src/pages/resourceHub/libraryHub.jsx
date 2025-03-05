@@ -102,28 +102,20 @@ export default function LibraryHub () {
                                 {defaultLibrary.map((libraryItem, index) => {
                                     const library = libraryItem.library;
                                     return (
-                                        <TableRow key={index}>
-                                        <TableCell>{library.title || "#"}</TableCell>
-                                        <TableCell>{library.type || "#"}</TableCell>
-                                        <TableCell>
-                                          <a
-                                            href={library.links || "#"}
-                                            target="_blank"
-                                            className="text-blue-500"
-                                          >
-                                            Tutorials
-                                          </a>
-                                        </TableCell>
-                                        <TableCell>
-                                          <a
-                                            href={library.links || "#"}
-                                            target="_blank"
-                                            className="text-blue-500"
-                                          >
-                                            Web Tools
-                                          </a>
-                                        </TableCell>
-                                      </TableRow>
+                                      <TableRow key={index}>
+                                      <TableCell>{library.title || "#"}</TableCell>
+                                      <TableCell>{library.type || "#"}</TableCell>
+                                      <TableCell>{library.des || "#"}</TableCell>
+                                      <TableCell>
+                                        <a
+                                          href={library.link || "#"}
+                                          target="_blank"
+                                          className="text-blue-500"
+                                        >
+                                          Web Tools
+                                        </a>
+                                      </TableCell>
+                                    </TableRow>
                                     );
                                 })}
                             </TableBody>
@@ -138,10 +130,10 @@ export default function LibraryHub () {
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>Job Title</TableHead>
+                        <TableHead>Information Title</TableHead>
                         <TableHead>Type</TableHead>
-                        <TableHead>Resources</TableHead>
-                        <TableHead>Tools</TableHead>
+                        <TableHead>Description</TableHead>
+                        <TableHead>Link</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -150,27 +142,11 @@ export default function LibraryHub () {
                         return (
                             <TableRow key={index}>
                             <TableCell>{library.title || "#"}</TableCell>
-                            <TableCell>{library.specifics.type || "#"}</TableCell>
+                            <TableCell>{library.type || "#"}</TableCell>
+                            <TableCell>{library.des || "#"}</TableCell>
                             <TableCell>
                               <a
-                                href={library.specifics.resources.tutorials.links || "#"}
-                                target="_blank"
-                                className="text-blue-500"
-                              >
-                                Tutorials
-                              </a>
-                              ,{" "}
-                              <a
-                                href={library.specifics.resources.videos.links || "#"}
-                                target="_blank"
-                                className="text-blue-500"
-                              >
-                                Videos
-                              </a>
-                            </TableCell>
-                            <TableCell>
-                              <a
-                                href={library.specifics.Tools.web.links || "#"}
+                                href={library.link || "#"}
                                 target="_blank"
                                 className="text-blue-500"
                               >

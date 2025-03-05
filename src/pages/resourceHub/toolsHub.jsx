@@ -40,7 +40,7 @@ export default function ToolHub () {
     const [openDialog, setOpenDialog] = useState(false);
 
     useEffect(() => {
-        fetch("/database/data/tool.json")
+        fetch("/database/data/tools.json")
         .then((res) => res.json())
         .then((data) => {
             console.log("Database Sustineo Loaded", data)
@@ -103,28 +103,20 @@ export default function ToolHub () {
                                 {defaultTool.map((toolItem, index) => {
                                     const tool = toolItem.tool;
                                     return (
-                                        <TableRow key={index}>
-                                        <TableCell>{tool.title || "#"}</TableCell>
-                                        <TableCell>{tool.type || "#"}</TableCell>
-                                        <TableCell>
-                                          <a
-                                            href={tool.links || "#"}
-                                            target="_blank"
-                                            className="text-blue-500"
-                                          >
-                                            Tutorials
-                                          </a>
-                                        </TableCell>
-                                        <TableCell>
-                                          <a
-                                            href={tool.links || "#"}
-                                            target="_blank"
-                                            className="text-blue-500"
-                                          >
-                                            Web Tools
-                                          </a>
-                                        </TableCell>
-                                      </TableRow>
+                                      <TableRow key={index}>
+                                      <TableCell>{tool.title || "#"}</TableCell>
+                                      <TableCell>{tool.type || "#"}</TableCell>
+                                      <TableCell>{tool.des || "#"}</TableCell>
+                                      <TableCell>
+                                        <a
+                                          href={tool.link || "#"}
+                                          target="_blank"
+                                          className="text-blue-500"
+                                        >
+                                          Web Tools
+                                        </a>
+                                      </TableCell>
+                                    </TableRow>
                                     );
                                 })}
                             </TableBody>
@@ -149,36 +141,20 @@ export default function ToolHub () {
                     {toolDatabase.map((toolItem, index) => {
                         const tool = toolItem.tool;
                         return (
-                            <TableRow key={index}>
-                            <TableCell>{tool.title || "#"}</TableCell>
-                            <TableCell>{tool.specifics.type || "#"}</TableCell>
-                            <TableCell>
-                              <a
-                                href={tool.specifics.resources.tutorials.links || "#"}
-                                target="_blank"
-                                className="text-blue-500"
-                              >
-                                Tutorials
-                              </a>
-                              ,{" "}
-                              <a
-                                href={tool.specifics.resources.videos.links || "#"}
-                                target="_blank"
-                                className="text-blue-500"
-                              >
-                                Videos
-                              </a>
-                            </TableCell>
-                            <TableCell>
-                              <a
-                                href={tool.specifics.Tools.web.links || "#"}
-                                target="_blank"
-                                className="text-blue-500"
-                              >
-                                Web Tools
-                              </a>
-                            </TableCell>
-                          </TableRow>
+                          <TableRow key={index}>
+                          <TableCell>{tool.title || "#"}</TableCell>
+                          <TableCell>{tool.type || "#"}</TableCell>
+                          <TableCell>{tool.des || "#"}</TableCell>
+                          <TableCell>
+                            <a
+                              href={tool.link || "#"}
+                              target="_blank"
+                              className="text-blue-500"
+                            >
+                              Web Tools
+                            </a>
+                          </TableCell>
+                        </TableRow>
                         );
                     })}
                 </TableBody>

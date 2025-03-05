@@ -7,6 +7,7 @@ import AnalyzeResume from "@/pages/jobSeek/jobAnalyze";
 import CreateResume from "@/pages/jobSeek/createResume";
 import LibraryHub from "@/pages/resourceHub/libraryHub";
 import ToolHub from "@/pages/resourceHub/toolsHub";
+import AskAway from "@/pages/askAway/askAway";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <AnalyzeResume />
         <LibraryHub />
         <ToolHub />
+        <AskAway />
     </div>
   );
 }

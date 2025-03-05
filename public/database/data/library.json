@@ -1,0 +1,20 @@
+[
+    {
+        "library": {
+            "title": "Understanding Dyslexia",
+            "type": "Article",
+            "keywords": ["dyslexia", "reading"],
+            "des": "A research article on dyslexia and effective reading strategies.",
+            "link": "https://www.dyslexiaresource.org/research"
+        }
+    },
+    {
+        "library": {
+            "title": "Color Blind Accessibility",
+            "type": "PDF",
+            "keywords": ["color blindness", "vision"],
+            "des": "A PDF guide on designing for colorblind users.",
+            "link": "https://accessibility.colorblindguide.pdf"
+        }
+    }
+]

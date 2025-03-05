@@ -2,19 +2,19 @@
     {
         "tool": {
             "title": "Accessibly",
-            "type": "",
-            "keywords": [],
-            "des": "",
-            "links": ""
+            "type": "Chrome Extension",
+            "keywords": ["dyslexia", "reading"],
+            "des": "An extension that helps dyslexic users read better.",
+            "link": "https://chrome.google.com/opendyslexic"
         }
     },
     {
         "tool": {
-            "title": "Accessibly",
-            "type": "",
-            "keywords": [],
-            "des": "",
-            "links": ""
+            "title": "High Contrast Mode",
+            "type": "Browser Add-on",
+            "keywords": ["color blindness", "vision"],
+            "des": "Enhances contrast for users with color blindness.",
+            "link": "https://colorblindhelp.com"
         }
     }
 ]
