@@ -1,45 +1,18 @@
 [
     {
-        "basicResponse": [
-            {
-                "title": "greetings",
-                "keywords": ["hello", "hi", "hey", "good morning", "good evening"],
-                "specifics": {
-                    "response": "Hello! How can I assist you today?"
-                }
-            }
-        ]
+        "keywords": ["hello", "hi", "hey", "good morning", "good evening"],
+        "response": "Hello! How can I assist you today?"
     },
     {
-        "basicResponse": [
-            {
-                "title": "questions",
-                "keywords": ["who are you", "what is your name"],
-                "specifics": {
-                "response": "I am Sustineo, your assistant. How can I help?"
-                }
-            }
-        ]
+        "keywords": ["who are you", "what is your name"],
+        "response": "I am Sustineo, your assistant. How can I help?"
     },
     {
-        "basicResponse": [
-            {
-                "title": "farewells",
-                "keywords": ["thank you", "thanks"],
-                "specifics": {
-                    "response": "You're welcome! Let me know if you need anything else."
-                }
-            }
-        ]
+        "keywords": ["thank you", "thanks"],
+        "response": "You're welcome! Let me know if you need anything else."
     },
     {
-        "basicResponse": [
-            {
-                "title": "assistive",
-                "keywords": ["help", "support", "assist"],
-                "response": "I can help! What do you need assistance with?"
-            }
-        ]
+        "keywords": ["help", "support", "assist"],
+        "response": "I can help! What do you need assistance with?"
     }
-    
 ]

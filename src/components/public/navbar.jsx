@@ -16,39 +16,39 @@ import {
 
 const components = [
     {
-        title: "Alert Dialog",
-        href: "/docs/primitives/alert-dialog",
+        title: "Accessibility",
+        href: "",
         description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+        "Convergent is equipped of various accessibility feature to ensure all are accomodated",
     },
     {
-        title: "Hover Card",
+        title: "Job Seeker",
         href: "/docs/primitives/hover-card",
         description:
-        "For sighted users to preview content available behind a link.",
+        "Seek job know matter your circumstances.",
     },
     {
-        title: "Progress",
+        title: "Sustineo",
         href: "/docs/primitives/progress",
         description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+        "Need help? ask sustineo for advice, recommendations and many more.",
     },
     {
-        title: "Scroll-area",
+        title: "Resource Hub",
         href: "/docs/primitives/scroll-area",
-        description: "Visually or semantically separates content.",
+        description: "Libraries and Tools to accomodate and help your future job.",
     },
     {
-        title: "Tabs",
+        title: "Scriptum",
         href: "/docs/primitives/tabs",
         description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+        "Analyze or Create your resume for recommendations and analysis",
     },
     {
-        title: "Tooltip",
+        title: "Vox Quae",
         href: "/docs/primitives/tooltip",
         description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+        "An algorithm that finds jobs, information, and tools for you.",
     },
 ];
 
@@ -74,23 +74,22 @@ export default function NavigationMenuDemo() {
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      shadcn/ui
+                      Convergent
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
+                      An AI tool where you can find jobs no matter your circumstances
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/about" title="Introduction">
+                Learn more what convergent is about.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/about" title="Tutorial">
+                How do you use convergent?
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/goals" title="Goal">
+                Convergent goal is to reduce inequalities while increasing jobs around the world!
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -112,7 +111,7 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="https://github.com/Yurei04/convergent" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Github
             </NavigationMenuLink>

@@ -78,7 +78,9 @@ export default function JobSeeker() {
 
     return (
         <div className="relative lg:py-22 py-20 items-center">
-        <h1>Job Seeker with Scriptum</h1>
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 items-center justify-center text-2xl">
+            Job Seeker with Vox Quae
+        </h1>
         <div className="flex w-full max-w-sm items-center space-x-2">
             <Input
                 type="text"
@@ -97,7 +99,9 @@ export default function JobSeeker() {
             {defaultJobs.length > 0 ? (
                 <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                     <DialogHeader>
-                        <DialogTitle>Job Search Results</DialogTitle>
+                        <DialogTitle >
+                            Job Search Results
+                        </DialogTitle>
                     </DialogHeader>
                     <DialogContent>
                         <Table>

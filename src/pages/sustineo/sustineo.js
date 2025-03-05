@@ -38,6 +38,7 @@ export default function SustineoChatbot() {
                 setToolDatabase(toolsRes || []);
                 setLibraryDatabase(libraryRes || []);
                 setTemplateDatabase(templateRes || []);
+
             } catch (error) {
                 console.error("Failed to load databases:", error);
                 setMessages([{ role: "bot", content: "Error loading resources. Please refresh the page." }]);
@@ -51,76 +52,69 @@ export default function SustineoChatbot() {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-    function searchTool() {
+    function searchTool(query) {
         if (!toolDatabase.length) return;
-
-        // Filter jobs based on title or keywords
-        const filteredJobs = toolDatabase.filter((item) => {
-            const tool = item.tool;
-            const titleMatch = tool.title.toLowerCase().includes(searchTerm.toLowerCase());
-            const keywordMatch = tool.keywords.some((keyword) =>
-                keyword.toLowerCase().includes(searchTerm.toLowerCase())
+    
+        const filteredTools = toolDatabase.filter((item) => {
+            return (
+                item.tool.title.toLowerCase().includes(query) ||
+                item.tool.keywords.some((keyword) => query.includes(keyword.toLowerCase()))
             );
-            return titleMatch || keywordMatch;
         });
-        setDefaultTool(filteredJobs);
+    
+        setDefaultTool(filteredTools);
     }
     
-    function searchLibrary() {
+    function searchLibrary(query) {
         if (!libraryDatabase.length) return;
-
-        // Filter jobs based on title or keywords
-        const filteredJobs = libraryDatabase.filter((item) => {
-            const library = item.library;
-            const titleMatch = library.title.toLowerCase().includes(searchTerm.toLowerCase());
-            const keywordMatch = library.keywords.some((keyword) =>
-                keyword.toLowerCase().includes(searchTerm.toLowerCase())
+    
+        const filteredLibraries = libraryDatabase.filter((item) => {
+            return (
+                item.library.title.toLowerCase().includes(query) ||
+                item.library.keywords.some((keyword) => query.includes(keyword.toLowerCase()))
             );
-            return titleMatch || keywordMatch;
         });
-        setDefaultLibrary(filteredJobs);
+    
+        setDefaultLibrary(filteredLibraries);
     }
-
+    
     const sendMessage = async () => {
         if (!query.trim()) return;
-
+    
         const lowerQuery = query.toLowerCase();
         const userMessage = { role: "user", content: query };
         setMessages(prev => [...prev, userMessage]);
         setQuery("");
-
+    
         const greetings = ["hello", "hi", "hey", "good morning", "good evening"];
         const requestWords = ["help", "recommend", "suggest", "need", "assist"];
-
+    
         const containsGreeting = greetings.some(word => lowerQuery.includes(word));
         const containsRequest = requestWords.some(word => lowerQuery.includes(word));
-
+    
         let botResponse = "Sorry, I do not understand.";
-
+    
         if (containsGreeting && !containsRequest) {
-
             const filteredResponse = basicDatabase.filter((item) => {
-                const basics = item.basics;
-                const titleMatch = basics.title.toLowerCase().includes(searchTerm.toLowerCase());
-                const keywordMatch = basics.keywords.some((keyword) =>
-                    keyword.toLowerCase().includes(searchTerm.toLowerCase())
+                return (
+                    item.basics.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
                 );
-                return titleMatch || keywordMatch;
             });
-
-            setDefaultBasic(filteredResponse);
-
-            botResponse = basicResponse.response;
-
+    
+            if (filteredResponse.length > 0) {
+                botResponse = filteredResponse[0].basics.response || "I don't have an answer for that.";
+            } else {
+                botResponse = "Hello! How can I assist you today?";
+            }
         } else if (containsRequest) {
-            searchTool();
-            searchLibrary();
-        } else {
-            botResponse = "Sorry, I do not understand.";
+            searchTool(lowerQuery);
+            searchLibrary(lowerQuery);
+            botResponse = "Here are some recommendations based on your request.";
         }
-
+    
         setMessages(prev => [...prev, { role: "bot", content: botResponse }]);
     };
+    
 
     return (
         <div className="flex flex-col items-center h-screen p-4">
@@ -174,7 +168,9 @@ export default function SustineoChatbot() {
                                 </TableBody>
                             </Table>
                 ) : (
-                    setMessages([{ role: "bot", content: "No available information" }])
+                    defaultTool.length === 0 && messages[messages.length - 1]?.content !== "No available information" &&
+                    setMessages(prev => [...prev, { role: "bot", content: "No available information" }])
+
                 )}
                  {defaultLibrary.length > 0 ?(
                             <Table>
@@ -210,7 +206,9 @@ export default function SustineoChatbot() {
                                 </TableBody>
                             </Table>
                 ) : (
-                    setMessages([{ role: "bot", content: "No available tool" }])
+                    defaultTool.length === 0 && messages[messages.length - 1]?.content !== "No available information" &&
+                    setMessages(prev => [...prev, { role: "bot", content: "No available information" }])
+
                 )}
                 </CardContent>
                     

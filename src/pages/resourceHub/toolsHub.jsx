@@ -68,7 +68,10 @@ export default function ToolHub () {
 
     return (
         <div className="relative lg:py-22 py-20 items-center">
-        <h1>Job Seeker with Scriptum</h1>
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 items-center justify-center text-2xl">
+            Tools Hub  
+        </h1>
+        <br />
         <div className="flex w-full max-w-sm items-center space-x-2">
             <Input
                 type="text"

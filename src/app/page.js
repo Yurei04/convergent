@@ -7,7 +7,8 @@ import AnalyzeResume from "@/pages/jobSeek/jobAnalyze";
 import CreateResume from "@/pages/jobSeek/createResume";
 import LibraryHub from "@/pages/resourceHub/libraryHub";
 import ToolHub from "@/pages/resourceHub/toolsHub";
-import AskAway from "@/pages/askAway/askAway";
+import Sustineo from "@/pages/sustineo/sustineo";
+import About from "@/pages/subPage/about";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
         <CreateResume />
         <LibraryHub />
         <ToolHub />
-        <AskAway />
+        <About />
+        <Sustineo />
     </div>
   );
 }

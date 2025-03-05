@@ -44,15 +44,15 @@ export default  function HomePage () {
                 <br />
                 <TypeAnimation
                     sequence={[
-                    "One",
+                    "Search",
                     1500,
-                    "One Two",
+                    "Learn, Apply",
                     1500,
-                    "One Two Three",
+                    "Search, Learn, Apply",
                     1500,
-                    "One Two",
+                    "Learn, Apply",
                     1500,
-                    "One",
+                    "Search",
                     1500,
                     "",
                     1500,
@@ -64,7 +64,7 @@ export default  function HomePage () {
                 />
                 </h3>
                     <p className="text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6">
-                        Convergent is a website, lorem dgasigdgasigdiagsidgiasgdiguasgidug
+                        Convergent find jobs no matter the circumstances.
                     </p>
         </motion.div>
 
@@ -76,9 +76,9 @@ export default  function HomePage () {
             >
             <div className="relative rounded-full bg-[#181818] w-60 h-60 lg:w-72 lg:h-72">
                 <Image
-                    src="/images/Convergent.png"
+                    src="/public/images/temp.png"
                     alt="logo image"
-                    className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-fill"
                     width={300}
                     height={300}
                     objectFit="cover"
@@ -90,12 +90,12 @@ export default  function HomePage () {
     <div className="items-center justify-center grid grid-cols-1 grid-rows-1 gap-4 sm:grid-cols-3 grid-rows-auto mt-5">
                 <Card className="w-[350px]">
                     <CardHeader>
-                        <CardTitle>Scriptum</CardTitle>
+                        <CardTitle>Job Seeker</CardTitle>
                         <CardDescription>Analyze and Create your Resume</CardDescription>
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
                         <Button>
-                            <Link href={"/jobSeek"}>Create</Link>
+                            <Link href={"/jobSeek"}>Lets Go!</Link>
                         </Button>
                         <Dialog>
                         <DialogTrigger asChild>
@@ -105,7 +105,7 @@ export default  function HomePage () {
                                 <DialogHeader>
                                 <DialogTitle>What is Scriptum?</DialogTitle>
                                 <DialogDescription>
-                                    Is a resume analyzer and creator that can help you find job base on your resume.
+                                    Is a resume AI analyzer and creator that can help you find job base on your resume.
                                 </DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter className="sm:justify-start">
@@ -130,7 +130,9 @@ export default  function HomePage () {
                         <CardDescription>An AI chatbot that provides answer and provide recommendation</CardDescription>
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
-                        <Button>Start</Button>
+                        <Button>
+                            <Link href={"/jobSeek"}>Lets Go!</Link>
+                        </Button>
                         <Dialog>
                         <DialogTrigger asChild>
                             <Button>Details</Button>    
@@ -160,11 +162,13 @@ export default  function HomePage () {
 
                 <Card className="w-[350px]">
                     <CardHeader>
-                        <CardTitle>Scriptum</CardTitle>
+                        <CardTitle>Resource Hub</CardTitle>
                         <CardDescription>Deploy your new project in one-click.</CardDescription>
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
-                        <Button>Start</Button>
+                    <Button>
+                            <Link href={"/jobSeek"}>Lets Go!</Link>
+                        </Button>
                         <Dialog>
                         <DialogTrigger asChild>
                             <Button>Details</Button>    

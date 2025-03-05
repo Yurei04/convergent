@@ -113,7 +113,11 @@ export default function AnalyzeResume() {
   }
 
   return (
-    <div className="items-center justify-center flex mt-5">
+    <div className="items-center justify-center flex-col mt-5">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 items-center justify-center text-2xl">
+            Scriptum 
+        </h1>
+        <br />
       <Tabs defaultValue="withDID" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="withDID">With DID</TabsTrigger>
