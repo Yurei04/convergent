@@ -17,7 +17,6 @@ export default function Home() {
         <JobSeeker />
         <AnalyzeResume />
         <CreateResume />
-        <AnalyzeResume />
         <LibraryHub />
         <ToolHub />
         <AskAway />

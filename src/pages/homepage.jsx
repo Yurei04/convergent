@@ -24,6 +24,8 @@ import {
       DialogClose
 } from "@/components/ui/dialog"
 
+import Link from "next/link";
+
 
 export default  function HomePage () {
   return (
@@ -89,7 +91,43 @@ export default  function HomePage () {
                 <Card className="w-[350px]">
                     <CardHeader>
                         <CardTitle>Scriptum</CardTitle>
+                        <CardDescription>Analyze and Create your Resume</CardDescription>
+                    </CardHeader>
+                    <CardContent className="items-center flex gap-2">
+                        <Button>
+                            <Link href={"/jobSeek"}>Create</Link>
+                        </Button>
+                        <Dialog>
+                        <DialogTrigger asChild>
+                            <Button>Details</Button>    
+                        </DialogTrigger>
+                            <DialogContent>
+                                <DialogHeader>
+                                <DialogTitle>What is Scriptum?</DialogTitle>
+                                <DialogDescription>
+                                    Is a resume analyzer and creator that can help you find job base on your resume.
+                                </DialogDescription>
+                                </DialogHeader>
+                                <DialogFooter className="sm:justify-start">
+                                    <DialogClose asChild>
+                                        <Button type="button">
+                                            Close
+                                        </Button>
+                                    </DialogClose>
+                                </DialogFooter>
+                            </DialogContent>
+                        </Dialog>
+                    </CardContent>
+                    <CardFooter className="flex justify-between">
                         <CardDescription>Deploy your new project in one-click.</CardDescription>
+                    </CardFooter>
+                </Card>
+
+
+                <Card className="w-[350px]">
+                    <CardHeader>
+                        <CardTitle>Sustineo</CardTitle>
+                        <CardDescription>An AI chatbot that provides answer and provide recommendation</CardDescription>
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
                         <Button>Start</Button>
@@ -119,7 +157,6 @@ export default  function HomePage () {
                         <CardDescription>Deploy your new project in one-click.</CardDescription>
                     </CardFooter>
                 </Card>
-
 
                 <Card className="w-[350px]">
                     <CardHeader>
@@ -154,41 +191,6 @@ export default  function HomePage () {
                         <CardDescription>Deploy your new project in one-click.</CardDescription>
                     </CardFooter>
                 </Card>
-
-
-                <Card className="w-[350px]">
-                    <CardHeader>
-                        <CardTitle>Scriptum</CardTitle>
-                        <CardDescription>Deploy your new project in one-click.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="items-center flex gap-2">
-                            <Button>Start</Button>
-                        <Dialog>
-                        <DialogTrigger asChild>
-                            <Button>Details</Button>    
-                        </DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                <DialogTitle>Are you absolutely sure?</DialogTitle>
-                                <DialogDescription>
-                                    This action cannot be undone. This will permanently delete your account
-                                    and remove your data from our servers.
-                                </DialogDescription>
-                                </DialogHeader>
-                                <DialogFooter className="sm:justify-start">
-                                    <DialogClose asChild>
-                                        <Button type="button">
-                                            Close
-                                        </Button>
-                                    </DialogClose>
-                                </DialogFooter>
-                            </DialogContent>
-                        </Dialog>
-                    </CardContent>
-                    <CardFooter className="flex justify-between">
-                        <CardDescription>Deploy your new project in one-click.</CardDescription>
-                    </CardFooter>
-                    </Card>
             </div>
 </div>
   );

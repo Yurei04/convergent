@@ -56,6 +56,13 @@ export default function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
+      <NavigationMenuItem>
+          <Link href="/docs" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Home
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -107,7 +114,7 @@ export default function NavigationMenuDemo() {
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
+              Github
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

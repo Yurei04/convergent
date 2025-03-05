@@ -53,9 +53,9 @@ export default function LibraryHub () {
 
         // Filter jobs based on title or keywords
         const filteredJobs = libraryDatabase.filter((item) => {
-            const tool = item.tool;
-            const titleMatch = tool.title.toLowerCase().includes(searchTerm.toLowerCase());
-            const keywordMatch = tool.keywords.some((keyword) =>
+            const library = item.library;
+            const titleMatch = library.title.toLowerCase().includes(searchTerm.toLowerCase());
+            const keywordMatch = library.keywords.some((keyword) =>
                 keyword.toLowerCase().includes(searchTerm.toLowerCase())
             );
             return titleMatch || keywordMatch;
