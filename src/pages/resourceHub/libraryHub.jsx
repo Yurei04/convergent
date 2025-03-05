@@ -32,7 +32,7 @@ import { Input } from "@/components/ui/input"
 import { useEffect, useState } from "react"
 
   
-export default function libraryHub () {
+export default function LibraryHub () {
     const [libraryDatabase, setLibraryDatabase] = useState([]);
     const [defaultLibrary, setDefaultLibrary] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");

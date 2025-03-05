@@ -4,6 +4,9 @@ import Homepage from "@/pages/homepage";
 import NavigationMenuDemo from "@/components/public/navbar"
 import JobSeeker from "@/pages/jobSeek";
 import AnalyzeResume from "@/pages/jobSeek/jobAnalyze";
+import CreateResume from "@/pages/jobSeek/createResume";
+import LibraryHub from "@/pages/resourceHub/libraryHub";
+import ToolHub from "@/pages/resourceHub/toolsHub";
 
 export default function Home() {
   return (
@@ -12,6 +15,10 @@ export default function Home() {
         <Homepage />
         <JobSeeker />
         <AnalyzeResume />
+        <CreateResume />
+        <AnalyzeResume />
+        <LibraryHub />
+        <ToolHub />
     </div>
   );
 }
