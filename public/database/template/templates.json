@@ -1,17 +1,14 @@
-{
-    "responses": [
-      {
-        "keywords": ["dyslexia", "reading"],
-        "template": "I recommend {tools} to assist with reading difficulties."
-      },
-      {
-        "keywords": ["job", "employment"],
-        "template": "For job assistance, {library} and {tools} might be helpful."
-      },
-      {
-        "keywords": ["visual", "color blindness"],
-        "template": "You can try {tools} to enhance visual accessibility."
-      }
-    ]
+[
+  {
+      "keywords": ["recommend", "suggest"],
+      "response": "I recommend {tools} for you to use."
+  },
+  {
+      "keywords": ["resources", "learning", "guide"],
+      "response": "You can check out these resources: {tools}."
+  },
+  {
+      "keywords": ["job", "career", "work"],
+      "response": "For job opportunities, I suggest looking at: {tools}."
   }
-  
+]

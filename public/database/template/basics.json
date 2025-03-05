@@ -1,0 +1,18 @@
+[
+    {
+        "keywords": ["hello", "hi", "hey", "good morning", "good evening"],
+        "response": "Hello! How can I assist you today?"
+    },
+    {
+        "keywords": ["who are you", "what is your name"],
+        "response": "I am Sustineo, your assistant. How can I help?"
+    },
+    {
+        "keywords": ["thank you", "thanks"],
+        "response": "You're welcome! Let me know if you need anything else."
+    },
+    {
+        "keywords": ["help", "support", "assist"],
+        "response": "I can help! What do you need assistance with?"
+    }
+]

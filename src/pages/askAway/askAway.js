@@ -8,47 +8,130 @@ import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
 export default function SustineoChatbot() {
+    const [libraryDatabase, setLibraryDatabase] = useState([]);
+    const [basicDatabase, setbasicDatabase] = useState([]);
+    const [toolDatabase, setToolDatabase] = useState([]);
+    const [templateDatabase, setTemplateDatabase] = useState([]);
+
     const [messages, setMessages] = useState([]);
     const [query, setQuery] = useState("");
-    const [database, setDatabase] = useState(null); // Store JSON data
     const chatEndRef = useRef(null);
 
+    // Data base for basic Responses
     useEffect(() => {
-        setMessages([{ role: "bot", content: "Hello! How can I assist you today?" }]);
+        if (!basicDatabase.length) {
+            setMessages([{ role: "bot", content: "I'm still loading resources, please try again." }]);
+        }
         
-        // Fetch the JSON database on mount
-        fetch("/components/sustineo/sustineo")
-            .then((res) => res.json())
-            .then((data) => setDatabase(data))
-            .catch((err) => console.error("Error loading database:", err));
-    }, []);
+        setMessages([{ role: "bot", content: "Hello, how can I help you today." }]);
+        
+        fetch("/database/template/basics.json")
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Database Basic Sustineo Loaded", data)
+            setbasicDatabase(data);
+        })
+        .catch((error) => console.error("Failed to load job database:", error));
+    }, []); 
+
+
+    // Database for tools 
+    useEffect(() => {
+        fetch("/database/data/tools.json")
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Database Tools Sustineo Loaded", data)
+            setToolDatabase(data);
+        })
+        .catch((error) => console.error("Failed to load job database:", error));
+    }, []); 
+
+    // database for library
+    useEffect(() => {
+        fetch("/database/data/library.json")
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Database Library Sustineo Loaded", data)
+            setLibraryDatabase(data);
+        })
+        .catch((error) => console.error("Failed to load job database:", error));
+    }, []); 
+
+    // database for responses template
+    useEffect(() => {
+        fetch("/database/template/templates.json")
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Database Templates Sustineo Loaded", data)
+            setTemplateDatabase(data);
+        })
+        .catch((error) => console.error("Failed to load job database:", error));
+    }, []); 
 
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-    const findResponse = (userQuery) => {
-        if (!database) return { response: "I'm not sure how to respond to that.", tools: [] };
-
-        const lowerQuery = userQuery.toLowerCase();
-        const match = database.responses.find((entry) =>
-            entry.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
-        );
-
-        return match ? { response: match.response, tools: match.tools || [] } 
-                     : { response: "I couldn't find relevant resources.", tools: [] };
-    };
 
     const sendMessage = async () => {
         if (!query.trim()) return;
-
+    
+        const lowerQuery = query.toLowerCase();
         const userMessage = { role: "user", content: query };
         setMessages((prev) => [...prev, userMessage]);
         setQuery("");
-
-        const botResponse = findResponse(query);
-        setMessages((prev) => [...prev, { role: "bot", content: botResponse.response, tools: botResponse.tools }]);
+    
+        const greetings = ["hello", "hi", "hey", "good morning", "good evening"];
+        const requestWords = ["help", "recommend", "suggest", "need", "assist"];
+    
+        const containsGreeting = greetings.some((word) => lowerQuery.includes(word));
+        const containsRequest = requestWords.some((word) => lowerQuery.includes(word));
+    
+        let botResponse;
+    
+        if (containsGreeting && !containsRequest) {
+            const match = basicDatabase.find((entry) =>
+                entry.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
+            );
+            botResponse = match ? match.response : "Hello! How can I assist you today?";
+        } else  if (containsRequest) {
+            const matchLibrary = libraryDatabase.find((entry) =>
+                entry.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
+            );
+    
+            const matchTool = toolDatabase.find((entry) =>
+                entry.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
+            );
+    
+            let resources = [];
+    
+            if (matchLibrary) {
+                resources = [...resources, ...matchLibrary.resources];
+            }
+            if (matchTool) {
+                resources = [...resources, ...matchTool.resources];
+            }
+    
+            if (resources.length > 0) {
+                const templateMatch = templateDatabase.find((template) =>
+                    template.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
+                );
+    
+                if (templateMatch) {
+                    botResponse = templateMatch.response.replace("{tools}", resources.join(", "));
+                } else {
+                    botResponse = `I found some useful resources: ${resources.join(", ")}`;
+                }
+            } else {
+                botResponse = "I couldn't find relevant resources.";
+            }
+        } else {
+            botResponse = "Sorry I do not understand.";
+        }
+        setMessages((prev) => [...prev, { role: "bot", content: botResponse }]);
     };
+    
+    
 
     return (
         <div className="flex flex-col items-center h-screen p-4">
