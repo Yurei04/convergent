@@ -96,13 +96,11 @@ export default function SustineoChatbot() {
     
         if (containsGreeting && !containsRequest) {
             const filteredResponse = basicDatabase.filter((item) => {
-                return (
-                    item.basics.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()))
-                );
+                return item.keywords.some((keyword) => lowerQuery.includes(keyword.toLowerCase()));
             });
     
             if (filteredResponse.length > 0) {
-                botResponse = filteredResponse[0].basics.response || "I don't have an answer for that.";
+                botResponse = filteredResponse[0].response || "I don't have an answer for that.";
             } else {
                 botResponse = "Hello! How can I assist you today?";
             }
@@ -114,10 +112,9 @@ export default function SustineoChatbot() {
     
         setMessages(prev => [...prev, { role: "bot", content: botResponse }]);
     };
-    
 
     return (
-        <div className="flex flex-col items-center h-screen p-4">
+        <div className="flex flex-col items-center h-screen p-4 w-full">
             <Card className="w-full max-w-lg h-full flex flex-col shadow-lg rounded-2xl">
                 <CardHeader className="flex-1 overflow-hidden p-4 bg-gray-100">
                     <ScrollArea className="h-full flex flex-col-reverse">
@@ -133,16 +130,16 @@ export default function SustineoChatbot() {
                         </div>
                     </ScrollArea>
                 </CardHeader>
+                <br />
                 <CardContent>
                 {defaultTool.length > 0 ?(
                             <Table>
                                 <TableHeader>
-                                    <h2>Recommendations</h2>
                                     <TableRow>
-                                        <TableHead>Job Title</TableHead>
-                                        <TableHead>Type</TableHead>
-                                        <TableHead>Resources</TableHead>
-                                        <TableHead>Tools</TableHead>
+                                        <TableHead>Tool Name</TableHead>
+                                        <TableHead>Tool Type</TableHead>
+                                        <TableHead>Tool Description</TableHead>
+                                        <TableHead>Tool Link</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
@@ -174,13 +171,13 @@ export default function SustineoChatbot() {
                 )}
                  {defaultLibrary.length > 0 ?(
                             <Table>
+
                                 <TableHeader>
-                                    <h2>Recommendations</h2>
                                     <TableRow>
-                                        <TableHead>Job Title</TableHead>
+                                        <TableHead>Information Title</TableHead>
                                         <TableHead>Type</TableHead>
-                                        <TableHead>Resources</TableHead>
-                                        <TableHead>Information</TableHead>
+                                        <TableHead>Description</TableHead>
+                                        <TableHead>Link</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
