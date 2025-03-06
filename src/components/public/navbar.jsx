@@ -41,7 +41,7 @@ const components = [
     },
     {
         title: "Scriptum",
-        href: "/subPage/scriptumHome",
+        href: "/subPage/scriptumFuncHome",
         description:
         "Analyze or Create your resume for recommendations and analysis",
     },

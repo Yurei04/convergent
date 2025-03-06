@@ -216,7 +216,7 @@ export default function JobSeeker() {
                 </CardHeader>
                 <CardContent>
                     <Button>
-                        <Link href={"/analyze-resume"}>Analyze</Link>
+                        <Link href={"/subPage/scriptumFuncHome"}>Analyze</Link>
                     </Button>
                 </CardContent>
                 <CardFooter>
@@ -231,7 +231,7 @@ export default function JobSeeker() {
                 </CardHeader>
                 <CardContent>
                     <Button>
-                        <Link href={"/create-resume"}>Create</Link>
+                        <Link href={"/subPage/scriptumFuncHome"}>Create</Link>
                     </Button>
                 </CardContent>
                 <CardFooter>

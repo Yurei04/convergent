@@ -78,11 +78,12 @@ export default  function HomePage () {
             >
             <div className="relative rounded-full bg-[#181818] w-60 h-60 lg:w-72 lg:h-72">
                 <Image
-                    src="/public/images/temp.png"
+                    src="/images/convergentlogotransparent.png"
+
                     alt="logo image"
                     className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-fill"
-                    width={300}
-                    height={300}
+                    width={1000}
+                    height={1000}
                     objectFit="cover"
                 />
             </div>
