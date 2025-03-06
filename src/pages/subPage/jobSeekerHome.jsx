@@ -1,7 +1,8 @@
-import Sustineo from "@/pages/sustineo/sustineo";
+
 import NavigationMenuDemo from "@/components/public/navbar";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import JobSeeker from "../jobSeek";
 
 export default function SustineoHome() {
     return (
@@ -12,7 +13,7 @@ export default function SustineoHome() {
             enableSystem
           >
             <NavigationMenuDemo />
-            <Sustineo />
+            <JobSeeker />
             </ThemeProvider>
         </div>
     )

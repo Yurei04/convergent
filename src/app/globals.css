@@ -9,6 +9,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -79,8 +83,6 @@
   --sidebar-border: oklch(0.279 0.041 260.031);
   --sidebar-ring: oklch(0.446 0.043 257.281);
 }
-
-
 
 @theme inline {
   --color-background: var(--background);

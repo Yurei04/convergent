@@ -1,9 +1,9 @@
 import Homepage from "@/pages/homepage";
 import NavigationMenuDemo from "@/components/public/navbar"
-
-
 import About from "@/pages/subPage/about";
-import Tutorial from "@/pages/subPage/tutorial";
+import Features from "@/pages/subPage/features";
+import Goals from "@/pages/goals";
+
 
 export default function Home() {
   return (
@@ -11,7 +11,9 @@ export default function Home() {
         <NavigationMenuDemo />
         <Homepage />
         <About />
-        <Tutorial />
+        <Goals />
+        <Features />
+
     </div>
   );
 }

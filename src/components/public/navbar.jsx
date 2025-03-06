@@ -24,30 +24,30 @@ const components = [
     },
     {
         title: "Job Seeker",
-        href: "/docs/primitives/hover-card",
+        href: "/subPage/jobSeekerHome",
         description:
         "Seek job know matter your circumstances.",
     },
     {
         title: "Sustineo",
-        href: "/docs/primitives/progress",
+        href: "/subPage/sustineoHome",
         description:
         "Need help? ask sustineo for advice, recommendations and many more.",
     },
     {
         title: "Resource Hub",
-        href: "/docs/primitives/scroll-area",
+        href: "/resourceHub",
         description: "Libraries and Tools to accomodate and help your future job.",
     },
     {
         title: "Scriptum",
-        href: "/docs/primitives/tabs",
+        href: "/subPage/scriptumHome",
         description:
         "Analyze or Create your resume for recommendations and analysis",
     },
     {
         title: "Vox Quae",
-        href: "/docs/primitives/tooltip",
+        href: "/subPage/scriptumFuncHome",
         description:
         "An algorithm that finds jobs, information, and tools for you.",
     },
@@ -58,7 +58,7 @@ export default function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
       <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Home
             </NavigationMenuLink>
@@ -83,13 +83,13 @@ export default function NavigationMenuDemo() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/about" title="Introduction">
+              <ListItem href="#About" title="Introduction">
                 Learn more what convergent is about.
               </ListItem>
-              <ListItem href="/about" title="Tutorial">
+              <ListItem href="#Tutorial" title="Features">
                 How do you use convergent?
               </ListItem>
-              <ListItem href="/goals" title="Goal">
+              <ListItem href="#Goals" title="Goal">
                 Convergent goal is to reduce inequalities while increasing jobs around the world!
               </ListItem>
             </ul>
@@ -105,7 +105,7 @@ export default function NavigationMenuDemo() {
                   title={component.title}
                   href={component.href}
                 >
-                  {component.description}
+                      {component.description}
                 </ListItem>
               ))}
             </ul>
