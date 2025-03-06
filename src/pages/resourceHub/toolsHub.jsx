@@ -67,7 +67,7 @@ export default function ToolHub () {
 
 
     return (
-        <div className="relative lg:py-22 py-20 items-center">
+        <div className="items-center border-1 p-1.5 m-1">
         <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 items-center justify-center text-2xl">
             Tools Hub  
         </h1>

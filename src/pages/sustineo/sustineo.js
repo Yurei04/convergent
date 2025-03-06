@@ -116,12 +116,12 @@ export default function SustineoChatbot() {
     return (
         <div className="flex flex-col items-center h-screen p-4 w-full">
             <Card className="w-full max-w-lg h-full flex flex-col shadow-lg rounded-2xl">
-                <CardHeader className="flex-1 overflow-hidden p-4 bg-gray-100">
+                <CardHeader className="flex-1 overflow-hidden p-4 bg-white dark:bg-gray-900">
                     <ScrollArea className="h-full flex flex-col-reverse">
                         <div className="flex flex-col gap-3">
                             {messages.map((msg, index) => (
                                 <div key={index} className={`p-3 rounded-lg max-w-[80%] ${
-                                    msg.role === "user" ? "self-end bg-blue-500 text-white" : "self-start bg-gray-300 text-black"
+                                    msg.role === "user" ? "self-end bg-blue-500 text-white dark:text-black" : "self-start bg-gray-300 text-black"
                                 }`}>
                                     {msg.content}
                                 </div>
@@ -130,7 +130,6 @@ export default function SustineoChatbot() {
                         </div>
                     </ScrollArea>
                 </CardHeader>
-                <br />
                 <CardContent>
                 {defaultTool.length > 0 ?(
                             <Table>
@@ -209,7 +208,7 @@ export default function SustineoChatbot() {
                 )}
                 </CardContent>
                     
-                <div className="flex gap-2 p-4 border-t bg-white">
+                <div className="flex gap-2 p-4 border-t bg-white dark:bg-gray-900">
                     <Input type="text" placeholder="Type a message..." value={query} onChange={(e) => setQuery(e.target.value)} className="flex-1" />
                     <Button onClick={sendMessage}>Send</Button>
                 </div>

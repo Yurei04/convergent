@@ -27,7 +27,9 @@ import {
 import Link from "next/link";
 
 
+
 export default  function HomePage () {
+
   return (
     <div className="relative lg:py-22 py-20 items-center">
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-center bg-opacity-80">
@@ -37,7 +39,7 @@ export default  function HomePage () {
                 transition={{ duration: 0.5 }}
                 className="col-span-12 sm:col-span-8 text-center sm:text-left"
                 >
-                <h3 className="text-black mb-4 text-4xl sm:text-5xl lg:text-8xl">
+                <h3 className="text-black dark:text-white mb-4 text-4xl sm:text-5xl lg:text-8xl">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400">
                         Convergent{" "}
                     </span>
@@ -95,7 +97,7 @@ export default  function HomePage () {
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
                         <Button>
-                            <Link href={"/jobSeek"}>Lets Go!</Link>
+                            <Link href={"/subPage/scriptumHome"}>Lets Go!</Link>
                         </Button>
                         <Dialog>
                         <DialogTrigger asChild>
@@ -131,7 +133,7 @@ export default  function HomePage () {
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
                         <Button>
-                            <Link href={"/jobSeek"}>Lets Go!</Link>
+                            <Link href={"/subPage/sustineoHome"}>Lets Go!</Link>
                         </Button>
                         <Dialog>
                         <DialogTrigger asChild>
@@ -166,8 +168,11 @@ export default  function HomePage () {
                         <CardDescription>Deploy your new project in one-click.</CardDescription>
                     </CardHeader>
                     <CardContent className="items-center flex gap-2">
-                    <Button>
-                            <Link href={"/jobSeek"}>Lets Go!</Link>
+                        <Button >
+                            <Link href={"/resourceHub"}>
+                            Lets Go!
+                            </Link>
+
                         </Button>
                         <Dialog>
                         <DialogTrigger asChild>
