@@ -34,6 +34,14 @@ import {
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import CreateResume from "./createResume";
+
+const jobKeywords = [
+  "code", "think", "develop", "debug", "deploy",
+  "analyze", "data", "machine learning", "AI",
+  "security", "penetration testing", "firewall", "hacking",
+  "design", "illustration", "branding", "UI/UX"
+];
 
 export default function AnalyzeResume() {
   const [resumeText, setResumeText] = useState("");
@@ -58,23 +66,44 @@ export default function AnalyzeResume() {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async () => {
-      const base64File = reader.result?.split(",")[1] || "";
 
-      const response = await fetch("/components/scriptum/parseResume", {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({ file: base64File })
-      });
-      const result = await response.json();
-      setResumeText(result.text);
+    reader.onload = async (e) => {
+      try {
+        const base64String = e.target.result.split(",")[1]; 
+
+        const response = await fetch("/api/parseResume", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file: base64String }),
+        });
+
+        if (!response.ok) {
+          console.error("API request failed:", response.status, response.statusText);
+          return;
+        }
+
+        const result = await response.json();
+
+        if (!result.keywords) {
+          console.error("No keywords found in API response", result);
+          return;
+        }
+
+        console.log("Extracted Keywords:", result.keywords);
+        setResumeText(result.keywords.join(", ")); 
+
+      } catch (error) {
+        console.error("Error parsing resume:", error);
+      }
     };
+
+    reader.readAsDataURL(file);
   };
+
 
   const analyzeResume = () => {
     if (!jobDatabase.length) return;
-    
+    console.log("Check 3")
     const { matches, recommendations } = findMatchingJob(resumeText, jobDatabase);
     
     console.log("Exact Matches:", matches);
@@ -83,12 +112,12 @@ export default function AnalyzeResume() {
     setRecommendedJobs(matches.length > 0 ? matches : recommendations);
     setOpenDialog(true);
   };
-  
+
   const goToApplyPage = () => {
     router.push("/apply");
   };
 
-  function findMatchingJob (resumeText, jobDatabase) {
+  function findMatchingJob(resumeText, jobDatabase) {
     let matches = [];
     let recommendations = [];
 
@@ -98,19 +127,22 @@ export default function AnalyzeResume() {
       const { title, keywords } = jobEntry.job;
       const jobTitle = title.toLowerCase();
 
-      if(resumeText.includes(jobTitle) || keywords.some(kw => resumeText.includes(kw.toLowerCase()))) {
+      if (resumeText.includes(jobTitle) || keywords.some(kw => resumeText.includes(kw.toLowerCase()))) {
         matches.push(jobEntry);
       } else {
         recommendations.push(jobEntry);
       }
     });
 
+    console.log("Calling findMatchingJob with:", resumeText, jobDatabase);
+
     if (matches.length > 0) {
-        return { matches, recommendations: [] }; 
+      return { matches, recommendations: [] }; 
     } else {
-        return { matches: [], recommendations: recommendations.slice(0, 3) }; // Suggest 3 alternatives
+      return { matches: [], recommendations: recommendations.slice(0, 3) };
     }
   }
+
 
   return (
     <div className="items-center justify-center flex-col mt-5">
@@ -118,18 +150,18 @@ export default function AnalyzeResume() {
             Scriptum 
         </h1>
         <br />
-      <Tabs defaultValue="withDID" className="w-[400px]">
+      <Tabs defaultValue="Analyze" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="withDID">With DID</TabsTrigger>
-          <TabsTrigger value="withoutDID">Without DID</TabsTrigger>
+          <TabsTrigger value="Analyze">Analyze</TabsTrigger>
+          <TabsTrigger value="Create">Create</TabsTrigger>
         </TabsList>
 
-        {["withDID", "withoutDID"].map((tabValue) => (
+        {["Analyze"].map((tabValue) => (
           <TabsContent key={tabValue} value={tabValue}>
             <Card>
               <CardHeader>
                 <CardTitle>
-                  {tabValue === "withDID" ? "With DID" : "Without DID"}
+                  {tabValue === "Analyze" ? "Create" : "Create"}
                 </CardTitle>
                 <CardDescription>
                   Upload your resume and analyze job matches.
@@ -151,6 +183,18 @@ export default function AnalyzeResume() {
           </TabsContent>
         ))}
 
+        {["Create"].map((tabValue) => (
+          <TabsContent key={tabValue} value={tabValue}>
+            <Card>
+            <CardTitle>
+                  {tabValue === "Create" ? "Analyze" : "Analyze"}
+                </CardTitle>
+            </Card>
+            <CardContent>
+              <CreateResume />
+            </CardContent>
+          </TabsContent>
+        ))}
         <Dialog open={openDialog} onOpenChange={setOpenDialog}>
           <DialogContent>
             <DialogHeader>
