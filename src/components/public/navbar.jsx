@@ -14,6 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ModeToggle } from "../modes"
+import { FontToggle } from "../fontModes"
 
 const components = [
     {
@@ -118,8 +119,11 @@ export default function NavigationMenuDemo() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="z-[9999]">
           <ModeToggle />
+        </NavigationMenuItem>
+        <NavigationMenuItem className="z-[9999]">
+          <FontToggle />
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

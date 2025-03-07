@@ -65,7 +65,7 @@ export default  function HomePage () {
                     repeat={Infinity}
                 />
                 </h3>
-                    <p className="text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6">
+                    <p className="text-black dark:text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6">
                         Convergent find jobs no matter the circumstances.
                     </p>
         </motion.div>

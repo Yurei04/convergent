@@ -2,6 +2,8 @@ import Sustineo from "@/pages/sustineo/sustineo";
 import NavigationMenuDemo from "@/components/public/navbar";
 import "@/app/globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import "@/components/fontModes";
+import "@/components/modes";
 
 export default function SustineoHome() {
     return (
@@ -11,7 +13,7 @@ export default function SustineoHome() {
             defaultTheme="dark"
             enableSystem
           >
-            <NavigationMenuDemo />
+            <NavigationMenuDemo className="relative z-50"/>
             <Sustineo />
             </ThemeProvider>
         </div>

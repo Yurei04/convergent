@@ -5,7 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: "var(--font-sans), sans-serif",
+        dyslexic: "'OpenDyslexic', sans-serif",
+        readable: "'Lexend', sans-serif",
+      },
+    },
   },
   plugins: {
     "@tailwindcss/postcss": {},
