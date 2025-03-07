@@ -1,20 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **Convergent**  
 
-## Getting Started
+## **Overview**  
+Convergent is an AI-powered job-matching platform designed to help individuals with disabilities find meaningful employment. By leveraging intelligent algorithms, resume analysis, and tailored career guidance, Convergent ensures inclusivity and accessibility in the job search process.  
 
-First, run the development server:
+## **Features**  
+✅ **Vox Quae** – An algorithm that helps you search for your future job!  
+✅ **Scriptum** – Both an analyzer and creator of resumes to help identify jobs suited for you.  
+✅ **Sustineo** – A chatbot that provides tailored career advice, recommendations, and helpful tools.  
+✅ **Resource Hub** – A collection of information and resources to accommodate your needs, whether for the present or the future.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **Installation & Setup**  
+To run Convergent locally, follow these steps:  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the repository:**  
+   ```bash
+   git clone https://github.com/your-username/convergent.git
+   cd convergent
+    ```
+2. **Install dependencies:**  
+   ```bash
+   npm install
+   ```
+3. **Start the development server:**
+  ```bash
+  npm run dev
+  ```
+4. **Open in your browser:**
+  ```bash
+  Visit http://localhost:3000 to explore the platform.
+  First, run the development server:
+  ```
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
