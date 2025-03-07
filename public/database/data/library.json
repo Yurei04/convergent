@@ -1,6 +1,6 @@
 [
     {
-        "library": {
+        "libraryBook": {
             "title": "Understanding Dyslexia",
             "type": "Article",
             "keywords": ["dyslexia", "reading"],
@@ -9,7 +9,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Color Blind Accessibility",
             "type": "PDF",
             "keywords": ["color blindness", "vision"],
@@ -18,7 +18,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Web Accessibility Guidelines",
             "type": "Website",
             "keywords": ["accessibility", "WCAG"],
@@ -27,7 +27,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Inclusive Design Principles",
             "type": "Article",
             "keywords": ["inclusive design", "UX"],
@@ -36,7 +36,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "The Psychology of Attention",
             "type": "Book",
             "keywords": ["ADHD", "attention", "cognition"],
@@ -45,7 +45,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "AI for Accessibility",
             "type": "Report",
             "keywords": ["AI", "disability", "assistive tech"],
@@ -54,7 +54,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Dark Patterns in UX",
             "type": "Blog",
             "keywords": ["UX", "design", "ethics"],
@@ -63,7 +63,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Cognitive Load Theory and Design",
             "type": "Research Paper",
             "keywords": ["cognitive load", "learning", "design"],
@@ -72,7 +72,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Neurodiversity in the Workplace",
             "type": "Whitepaper",
             "keywords": ["neurodiversity", "workplace", "inclusion"],
@@ -81,7 +81,7 @@
         }
     },
     {
-        "library": {
+        "libraryBook": {
             "title": "Assistive Technology for the Blind",
             "type": "Website",
             "keywords": ["assistive tech", "blindness"],

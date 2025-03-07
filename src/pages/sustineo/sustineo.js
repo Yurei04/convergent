@@ -70,8 +70,8 @@ export default function SustineoChatbot() {
     
         const filteredLibraries = libraryDatabase.filter((item) => {
             return (
-                item.library.title.toLowerCase().includes(query) ||
-                item.library.keywords.some((keyword) => query.includes(keyword.toLowerCase()))
+                item.libraryBook.title.toLowerCase().includes(query) ||
+                item.libraryBook.keywords.some((keyword) => query.includes(keyword.toLowerCase()))
             );
         });
     
@@ -105,8 +105,9 @@ export default function SustineoChatbot() {
                 botResponse = "Hello! How can I assist you today?";
             }
         } else if (containsRequest) {
-            searchTool(lowerQuery);
             searchLibrary(lowerQuery);
+            searchTool(lowerQuery);
+
             botResponse = "Here are some recommendations based on your request.";
         }
     
@@ -115,6 +116,9 @@ export default function SustineoChatbot() {
 
     return (
         <div className="flex flex-col items-center h-screen p-4 w-full">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 items-center justify-center text-2xl">
+            Sustineo 
+        </h1>
             <Card className="w-full max-w-lg h-full flex flex-col shadow-lg rounded-2xl">
                 <CardHeader className="flex-1 overflow-hidden p-4 bg-white dark:bg-gray-900">
                     <ScrollArea className="h-full flex flex-col-reverse">
@@ -180,16 +184,18 @@ export default function SustineoChatbot() {
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    {defaultTool.map((libraryItem, index) => {
-                                        const library = libraryItem.tool;
+                                    {defaultLibrary.map((libraryItem, index) => {
+                                    if (!libraryItem || !libraryItem.libraryBook) return null;
+                                    const libraryBook = libraryItem.libraryBook;
+
                                         return (
                                         <TableRow key={index}>
-                                        <TableCell>{library.title || "#"}</TableCell>
-                                        <TableCell>{library.type || "#"}</TableCell>
-                                        <TableCell>{library.des || "#"}</TableCell>
+                                        <TableCell>{libraryBook.title || "#"}</TableCell>
+                                        <TableCell>{libraryBook.type || "#"}</TableCell>
+                                        <TableCell>{libraryBook.des || "#"}</TableCell>
                                         <TableCell>
                                             <a
-                                            href={library.link || "#"}
+                                            href={libraryBook.link || "#"}
                                             target="_blank"
                                             className="text-blue-500"
                                             >
@@ -202,7 +208,7 @@ export default function SustineoChatbot() {
                                 </TableBody>
                             </Table>
                 ) : (
-                    defaultTool.length === 0 && messages[messages.length - 1]?.content !== "No available information" &&
+                    defaultLibrary.length === 0 && messages[messages.length - 1]?.content !== "No available information" &&
                     setMessages(prev => [...prev, { role: "bot", content: "No available information" }])
 
                 )}

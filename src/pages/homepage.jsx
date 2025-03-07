@@ -66,7 +66,7 @@ export default  function HomePage () {
                 />
                 </h3>
                     <p className="text-black dark:text-[#ADB7BE] text-base sm:text-lg lg:text-xl mb-6">
-                        Convergent find jobs no matter the circumstances.
+                        "Where every ability finds its place."
                     </p>
         </motion.div>
 

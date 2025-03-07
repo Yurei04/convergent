@@ -185,11 +185,6 @@ export default function AnalyzeResume() {
 
         {["Create"].map((tabValue) => (
           <TabsContent key={tabValue} value={tabValue}>
-            <Card>
-            <CardTitle>
-                  {tabValue === "Create" ? "Analyze" : "Analyze"}
-                </CardTitle>
-            </Card>
             <CardContent>
               <CreateResume />
             </CardContent>

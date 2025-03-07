@@ -63,10 +63,6 @@ export default function CreateResume() {
 
   return (
     <div className="flex-col items-center justify-center mt-5">
-      <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-400 text-2xl">
-        Scriptum
-      </h1>
-      <br />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full max-w-lg p-6 border rounded-lg shadow-md">
           <FormField control={form.control} name="fullName" render={({ field }) => (
