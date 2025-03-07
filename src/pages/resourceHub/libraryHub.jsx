@@ -53,9 +53,9 @@ export default function LibraryHub () {
 
         // Filter jobs based on title or keywords
         const filteredJobs = libraryDatabase.filter((item) => {
-            const library = item.library;
-            const titleMatch = library.title.toLowerCase().includes(searchTerm.toLowerCase());
-            const keywordMatch = library.keywords.some((keyword) =>
+            const libraryBook = item.libraryBook;
+            const titleMatch = libraryBook.title.toLowerCase().includes(searchTerm.toLowerCase());
+            const keywordMatch = libraryBook.keywords.some((keyword) =>
                 keyword.toLowerCase().includes(searchTerm.toLowerCase())
             );
             return titleMatch || keywordMatch;
@@ -98,20 +98,22 @@ export default function LibraryHub () {
                                     <TableHead>Job Title</TableHead>
                                     <TableHead>Type</TableHead>
                                     <TableHead>Resources</TableHead>
-                                    <TableHead>Tools</TableHead>
+                                    <TableHead>Information</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
                                 {defaultLibrary.map((libraryItem, index) => {
-                                    const library = libraryItem.library;
+                                    if (!libraryItem || !libraryItem.libraryBook) return null;
+                                    const libraryBook = libraryItem.libraryBook;
+
                                     return (
                                       <TableRow key={index}>
-                                      <TableCell>{library.title || "#"}</TableCell>
-                                      <TableCell>{library.type || "#"}</TableCell>
-                                      <TableCell>{library.des || "#"}</TableCell>
+                                      <TableCell>{libraryBook.title || "#"}</TableCell>
+                                      <TableCell>{libraryBook.type || "#"}</TableCell>
+                                      <TableCell>{libraryBook.des || "#"}</TableCell>
                                       <TableCell>
                                         <a
-                                          href={library.link || "#"}
+                                          href={libraryBook.link || "#"}
                                           target="_blank"
                                           className="text-blue-500"
                                         >
@@ -141,15 +143,17 @@ export default function LibraryHub () {
                 </TableHeader>
                 <TableBody>
                     {libraryDatabase.map((libraryItem, index) => {
-                        const library = libraryItem.library;
+                    if (!libraryItem || !libraryItem.libraryBook) return null;
+                    const libraryBook = libraryItem.libraryBook;
+
                         return (
                             <TableRow key={index}>
-                            <TableCell>{library.title || "#"}</TableCell>
-                            <TableCell>{library.type || "#"}</TableCell>
-                            <TableCell>{library.des || "#"}</TableCell>
+                            <TableCell>{libraryBook.title || "#"}</TableCell>
+                            <TableCell>{libraryBook.type || "#"}</TableCell>
+                            <TableCell>{libraryBook.des || "#"}</TableCell>
                             <TableCell>
                               <a
-                                href={library.link || "#"}
+                                href={libraryBook.link || "#"}
                                 target="_blank"
                                 className="text-blue-500"
                               >
