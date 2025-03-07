@@ -122,7 +122,7 @@ export default  function HomePage () {
                         </Dialog>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <CardDescription>Deploy your new project in one-click.</CardDescription>
+                        <CardDescription>Convergent</CardDescription>
                     </CardFooter>
                 </Card>
 
@@ -142,10 +142,9 @@ export default  function HomePage () {
                         </DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
-                                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                                <DialogTitle>What is Sustineo</DialogTitle>
                                 <DialogDescription>
-                                    This action cannot be undone. This will permanently delete your account
-                                    and remove your data from our servers.
+                                Get tailored career advice and recommendations of information and tools for your needs.
                                 </DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter className="sm:justify-start">
@@ -159,7 +158,7 @@ export default  function HomePage () {
                         </Dialog>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <CardDescription>Deploy your new project in one-click.</CardDescription>
+                        <CardDescription>Convergent</CardDescription>
                     </CardFooter>
                 </Card>
 
@@ -181,10 +180,9 @@ export default  function HomePage () {
                         </DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
-                                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                                <DialogTitle>What is Resource Hub</DialogTitle>
                                 <DialogDescription>
-                                    This action cannot be undone. This will permanently delete your account
-                                    and remove your data from our servers.
+                                Get Information and resourcecs that can help you accomodate your need no matter your circumstances, for the future or now!
                                 </DialogDescription>
                                 </DialogHeader>
                                 <DialogFooter className="sm:justify-start">
@@ -198,7 +196,7 @@ export default  function HomePage () {
                         </Dialog>
                     </CardContent>
                     <CardFooter className="flex justify-between">
-                        <CardDescription>Deploy your new project in one-click.</CardDescription>
+                        <CardDescription>Convergent</CardDescription>
                     </CardFooter>
                 </Card>
             </div>
