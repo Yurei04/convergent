@@ -16,5 +16,77 @@
             "des": "A PDF guide on designing for colorblind users.",
             "link": "https://accessibility.colorblindguide.pdf"
         }
+    },
+    {
+        "library": {
+            "title": "Web Accessibility Guidelines",
+            "type": "Website",
+            "keywords": ["accessibility", "WCAG"],
+            "des": "Official Web Content Accessibility Guidelines (WCAG) for inclusive design.",
+            "link": "https://www.w3.org/WAI/standards-guidelines/wcag/"
+        }
+    },
+    {
+        "library": {
+            "title": "Inclusive Design Principles",
+            "type": "Article",
+            "keywords": ["inclusive design", "UX"],
+            "des": "A detailed guide on creating digital experiences that work for everyone.",
+            "link": "https://inclusivedesignprinciples.org/"
+        }
+    },
+    {
+        "library": {
+            "title": "The Psychology of Attention",
+            "type": "Book",
+            "keywords": ["ADHD", "attention", "cognition"],
+            "des": "A deep dive into how attention works and how to improve focus.",
+            "link": "https://www.amazon.com/Psychology-Attention-Harold-Pashler/dp/026266156X"
+        }
+    },
+    {
+        "library": {
+            "title": "AI for Accessibility",
+            "type": "Report",
+            "keywords": ["AI", "disability", "assistive tech"],
+            "des": "A report on how AI is transforming accessibility solutions for people with disabilities.",
+            "link": "https://www.microsoft.com/en-us/ai/ai-for-accessibility"
+        }
+    },
+    {
+        "library": {
+            "title": "Dark Patterns in UX",
+            "type": "Blog",
+            "keywords": ["UX", "design", "ethics"],
+            "des": "A critical look at deceptive design practices and how to avoid them.",
+            "link": "https://www.darkpatterns.org/"
+        }
+    },
+    {
+        "library": {
+            "title": "Cognitive Load Theory and Design",
+            "type": "Research Paper",
+            "keywords": ["cognitive load", "learning", "design"],
+            "des": "An academic paper explaining how cognitive load impacts user experience.",
+            "link": "https://www.researchgate.net/publication/258337249_Cognitive_Load_Theory_in_Multimedia_Learning"
+        }
+    },
+    {
+        "library": {
+            "title": "Neurodiversity in the Workplace",
+            "type": "Whitepaper",
+            "keywords": ["neurodiversity", "workplace", "inclusion"],
+            "des": "A whitepaper discussing how to create an inclusive work environment for neurodiverse individuals.",
+            "link": "https://www.autism.org.uk/neurodiversity-workplace-guide"
+        }
+    },
+    {
+        "library": {
+            "title": "Assistive Technology for the Blind",
+            "type": "Website",
+            "keywords": ["assistive tech", "blindness"],
+            "des": "A list of tools and technologies that help visually impaired individuals navigate digital content.",
+            "link": "https://www.afb.org/blindness-and-low-vision/assistive-technology"
+        }
     }
 ]

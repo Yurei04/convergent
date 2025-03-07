@@ -14,5 +14,25 @@
     {
         "keywords": ["help", "support", "assist"],
         "response": "I can help! What do you need assistance with?"
+    },
+    {
+        "keywords": ["resume tips", "how to improve my resume"],
+        "response": "Make your resume clear and concise. Highlight your achievements, use action words, and tailor it to the job description. Need more help?"
+    },
+    {
+        "keywords": ["interview tips", "job interview advice"],
+        "response": "Prepare by researching the company, practicing common questions, and dressing appropriately. During the interview, stay confident and be concise."
+    },
+    {
+        "keywords": ["how to answer tell me about yourself"],
+        "response": "Start with a brief introduction, mention your relevant experience and skills, and conclude with how you align with the role."
+    },
+    {
+        "keywords": ["how to negotiate salary"],
+        "response": "Research market rates, highlight your value, and be prepared to justify your salary request. Be professional and open to discussion."
+    },
+    {
+        "keywords": ["follow up after interview"],
+        "response": "Send a thank-you email within 24 hours, express gratitude, and briefly reiterate your interest in the role."
     }
 ]

@@ -16,5 +16,113 @@
             "des": "Enhances contrast for users with color blindness.",
             "link": "https://colorblindhelp.com"
         }
+    },
+    {
+        "tool": {
+            "title": "Grammarly",
+            "type": "Writing Assistant",
+            "keywords": ["writing", "grammar", "communication"],
+            "des": "Improves writing by checking grammar, tone, and clarity.",
+            "link": "https://www.grammarly.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "LinkedIn Learning",
+            "type": "Online Courses",
+            "keywords": ["career growth", "skills", "education"],
+            "des": "Offers courses to improve skills in various professional fields.",
+            "link": "https://www.linkedin.com/learning"
+        }
+    },
+    {
+        "tool": {
+            "title": "Canva",
+            "type": "Design Tool",
+            "keywords": ["presentation", "design", "visual content"],
+            "des": "Helps create professional presentations and visual content.",
+            "link": "https://www.canva.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Trello",
+            "type": "Project Management",
+            "keywords": ["organization", "productivity", "teamwork"],
+            "des": "A tool for managing tasks and projects visually.",
+            "link": "https://trello.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Indeed",
+            "type": "Job Search Platform",
+            "keywords": ["job search", "career"],
+            "des": "A platform for finding jobs and researching companies.",
+            "link": "https://www.indeed.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Glassdoor",
+            "type": "Company Research",
+            "keywords": ["company reviews", "salary", "job search"],
+            "des": "Provides company reviews, salaries, and interview insights.",
+            "link": "https://www.glassdoor.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Coursera",
+            "type": "Online Courses",
+            "keywords": ["learning", "career development"],
+            "des": "Offers courses from universities to improve job skills.",
+            "link": "https://www.coursera.org"
+        }
+    },
+    {
+        "tool": {
+            "title": "Duolingo",
+            "type": "Language Learning",
+            "keywords": ["language", "communication"],
+            "des": "Helps professionals improve or learn new languages.",
+            "link": "https://www.duolingo.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Zoom",
+            "type": "Video Conferencing",
+            "keywords": ["remote work", "communication"],
+            "des": "A platform for virtual meetings and remote collaboration.",
+            "link": "https://zoom.us"
+        }
+    },
+    {
+        "tool": {
+            "title": "RescueTime",
+            "type": "Time Management",
+            "keywords": ["productivity", "focus"],
+            "des": "Tracks time spent on tasks to improve work efficiency.",
+            "link": "https://www.rescuetime.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Skillshare",
+            "type": "Creative Learning",
+            "keywords": ["creative skills", "learning"],
+            "des": "Online classes for creative professionals.",
+            "link": "https://www.skillshare.com"
+        }
+    },
+    {
+        "tool": {
+            "title": "Notion",
+            "type": "Workspace Organization",
+            "keywords": ["productivity", "note-taking"],
+            "des": "A workspace for notes, tasks, and collaboration.",
+            "link": "https://www.notion.so"
+        }
     }
 ]

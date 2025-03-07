@@ -6,7 +6,7 @@
             "specifics": {
                 "type": "remote",
                 "des": "A software engineer designs, develops, and maintains software applications.",
-                "susustainabilitystain": {
+                "sustain": {
                     "carbonFootprint": "Minimal",
                     "sustainability": "Optimize code efficiency"
                 },
@@ -122,6 +122,70 @@
                     "app": {
                         "des": "Professional graphic design software",
                         "links": ["https://www.adobe.com/products/photoshop.html", "https://www.sketch.com"]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "job": {
+            "title": "Project Manager",
+            "keywords": ["leadership", "planning", "organization", "risk management"],
+            "specifics": {
+                "type": "onsite/remote",
+                "des": "A project manager oversees planning, execution, and completion of projects.",
+                "sustain": {
+                    "carbonFootprint": "Minimal",
+                    "sustainability": "Use digital project management tools to reduce paper waste"
+                },
+                "resources": {
+                    "tutorials": {
+                        "links": ["https://www.pmi.org", "https://www.coursera.org/courses?query=project%20management"]
+                    },
+                    "videos": {
+                        "links": ["https://www.youtube.com/c/ProjectManagementInstitute", "https://www.youtube.com/c/AdrianaGirdler"]
+                    }
+                },
+                "Tools": {
+                    "web": {
+                        "des": "Project tracking and collaboration",
+                        "links": ["https://www.trello.com", "https://www.asana.com"]
+                    },
+                    "app": {
+                        "des": "Time management and workflow optimization",
+                        "links": ["https://www.clickup.com", "https://www.monday.com"]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "job": {
+            "title": "Marketing Specialist",
+            "keywords": ["advertising", "SEO", "branding", "social media"],
+            "specifics": {
+                "type": "onsite/remote",
+                "des": "A marketing specialist creates and implements strategies to promote brands and products.",
+                "sustain": {
+                    "carbonFootprint": "Medium due to digital advertising and data processing",
+                    "sustainability": "Use targeted ads to reduce unnecessary data consumption"
+                },
+                "resources": {
+                    "tutorials": {
+                        "links": ["https://www.hubspot.com", "https://moz.com/learn/seo"]
+                    },
+                    "videos": {
+                        "links": ["https://www.youtube.com/c/NeilPatel", "https://www.youtube.com/c/Ahrefs"]
+                    }
+                },
+                "Tools": {
+                    "web": {
+                        "des": "SEO and digital marketing",
+                        "links": ["https://www.semrush.com", "https://www.google.com/analytics"]
+                    },
+                    "app": {
+                        "des": "Social media management",
+                        "links": ["https://www.hootsuite.com", "https://www.buffer.com"]
                     }
                 }
             }

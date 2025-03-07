@@ -31,7 +31,7 @@ export function FontToggle() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuPortal>
-          <DropdownMenuContent align="end" forceMount>
+          <DropdownMenuContent align="end" >
             <DropdownMenuItem onClick={() => setFont("system-ui")}>Default</DropdownMenuItem>
             <DropdownMenuItem onClick={() => setFont("'OpenDyslexic', sans-serif")}>OpenDyslexic</DropdownMenuItem>
             <DropdownMenuItem onClick={() => setFont("'Lexend', sans-serif")}>High Readability (Lexend)</DropdownMenuItem>
