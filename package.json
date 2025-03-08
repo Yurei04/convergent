@@ -55,5 +55,10 @@
     "eslint-config-next": "15.2.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.10"
-  }
+  },
+  "description": "Convergent is an AI-powered job-matching platform designed to help individuals with disabilities find meaningful employment. By leveraging intelligent algorithms, resume analysis, and tailored career guidance, Convergent ensures inclusivity and accessibility in the job search process.",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

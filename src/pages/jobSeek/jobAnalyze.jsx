@@ -71,7 +71,7 @@ export default function AnalyzeResume() {
       try {
         const base64String = e.target.result.split(",")[1]; 
 
-        const response = await fetch("/api/parseResume", {
+        const response = await fetch("@/lib/parseResume", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ file: base64String }),
